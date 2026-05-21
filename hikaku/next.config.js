@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+  basePath: '/p_s_plan',
   output: 'export',
   trailingSlash: true,
   images: {

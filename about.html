@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P.S.歌ってみたとは？ | P.S.歌ってみた部</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #242333;
+      --muted: #5d596d;
+      --pink: #ff4f9a;
+      --pink-soft: #fff0f7;
+      --violet: #6d4ac8;
+      --violet-soft: #f4efff;
+      --mint: #39b990;
+      --yellow: #ffd86b;
+      --card: rgba(255, 255, 255, 0.9);
+      --line: rgba(255, 112, 170, 0.22);
+      --shadow: 0 18px 45px rgba(177, 105, 168, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.92)),
+        url("image/2_ps_FV_back ground.png") top center / cover fixed,
+        #fff9fd;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: 18px 16px 28px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-bottom: 8px;
+      color: var(--violet);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero {
+      min-height: 430px;
+      padding: 30px 28px 28px;
+      background: linear-gradient(105deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.94) 48%, rgba(255, 238, 248, 0.72) 100%);
+    }
+
+    .hero::before,
+    .hero::after,
+    .sparkle::before,
+    .sparkle::after {
+      position: absolute;
+      color: rgba(255, 79, 154, 0.36);
+      font-weight: 900;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      content: "♪";
+      left: 20px;
+      top: 22px;
+      font-size: 32px;
+      transform: rotate(-18deg);
+    }
+
+    .hero::after {
+      content: "♪";
+      right: 28px;
+      top: 32px;
+      color: rgba(109, 74, 200, 0.34);
+      font-size: 38px;
+      transform: rotate(16deg);
+    }
+
+    .logo {
+      width: min(280px, 74vw);
+      height: auto;
+      display: block;
+      margin: 0 auto 8px;
+      filter: drop-shadow(0 8px 15px rgba(255, 79, 154, 0.18));
+    }
+
+    h1,
+    h2,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 14px;
+      text-align: center;
+      color: var(--ink);
+      font-size: clamp(28px, 7vw, 44px);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .ribbon {
+      width: min(520px, 100%);
+      margin: 0 auto 28px;
+      padding: 12px 18px;
+      color: #fff;
+      background: linear-gradient(90deg, #ff5ca0, #ff2f87);
+      box-shadow: 0 10px 20px rgba(255, 79, 154, 0.24);
+      text-align: center;
+      font-weight: 900;
+      line-height: 1.6;
+      clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 18px 50%);
+    }
+
+    .hero-copy {
+      position: relative;
+      max-width: 430px;
+      margin: 0;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 2;
+      z-index: 1;
+    }
+
+    .hero-character {
+      position: absolute;
+      right: 8px;
+      bottom: 0;
+      width: min(42%, 300px);
+      height: auto;
+      opacity: 0.88;
+      filter: drop-shadow(0 20px 26px rgba(255, 79, 154, 0.16));
+    }
+
+    .content {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .section {
+      padding: 30px 28px;
+    }
+
+    .section-pink {
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.95), rgba(255, 240, 247, 0.92)),
+        var(--card);
+    }
+
+    .section-violet {
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.95), rgba(244, 239, 255, 0.9)),
+        var(--card);
+    }
+
+    .section-mint {
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.96), rgba(232, 255, 248, 0.84)),
+        var(--card);
+    }
+
+    h2 {
+      margin-bottom: 22px;
+      text-align: center;
+      color: var(--pink);
+      font-size: clamp(24px, 6.2vw, 34px);
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h2.violet {
+      color: var(--violet);
+    }
+
+    h2.mint {
+      color: var(--mint);
+    }
+
+    .underline {
+      display: inline;
+      background: linear-gradient(transparent 64%, rgba(255, 111, 176, 0.24) 0);
+      padding: 0 8px 2px;
+    }
+
+    p {
+      margin-bottom: 14px;
+      font-size: 16px;
+      font-weight: 650;
+      line-height: 1.95;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 230px;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 8px;
+      filter: drop-shadow(0 16px 24px rgba(122, 85, 201, 0.18));
+    }
+
+    ul {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      min-width: 0;
+      padding-left: 34px;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0.04em;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, #ff75b2, #ff3f94);
+      font-size: 14px;
+      line-height: 24px;
+      text-align: center;
+      box-shadow: 0 5px 12px rgba(255, 79, 154, 0.24);
+    }
+
+    .two-col {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 24px;
+    }
+
+    .skill-icons {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .skill {
+      display: grid;
+      place-items: center;
+      min-height: 128px;
+      padding: 16px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      font-weight: 900;
+      line-height: 1.5;
+    }
+
+    .skill b {
+      display: grid;
+      place-items: center;
+      width: 70px;
+      height: 70px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffe0ef, #f3e9ff);
+      color: var(--violet);
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px 14px;
+    }
+
+    .lesson {
+      min-height: 132px;
+      padding: 18px 12px;
+      border: 1px solid rgba(109, 74, 200, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.75);
+      text-align: center;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.55;
+    }
+
+    .lesson::before {
+      display: block;
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      color: var(--violet);
+      background: linear-gradient(135deg, #ffddec, #eaf5ff);
+      font-size: 34px;
+      line-height: 72px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+    }
+
+    .mic::before {
+      content: "🎤";
+    }
+
+    .high::before {
+      content: "♫";
+    }
+
+    .rhythm::before {
+      content: "▰";
+      color: #5aa9e6;
+    }
+
+    .heart::before {
+      content: "♡";
+      color: var(--pink);
+    }
+
+    .talk::before {
+      content: "🎧";
+    }
+
+    .movie::before {
+      content: "▶";
+    }
+
+    .rules {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 22px;
+      text-align: center;
+    }
+
+    .rule {
+      padding: 0 10px;
+      border-right: 2px dotted rgba(109, 74, 200, 0.18);
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.5;
+    }
+
+    .rule:last-child {
+      border-right: 0;
+    }
+
+    .rule b {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--violet);
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .message {
+      margin-top: 22px;
+      padding: 18px;
+      border: 2px solid rgba(255, 111, 176, 0.28);
+      border-radius: 8px;
+      color: var(--pink);
+      background: rgba(255, 255, 255, 0.72);
+      text-align: center;
+      font-size: clamp(18px, 4.8vw, 25px);
+      font-weight: 900;
+      line-height: 1.65;
+    }
+
+    .cta {
+      padding: 30px 22px 24px;
+      text-align: center;
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.92), rgba(255, 238, 247, 0.9)),
+        var(--card);
+    }
+
+    .cta h2 {
+      margin-bottom: 18px;
+    }
+
+    .badges {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .badge {
+      min-height: 86px;
+      padding: 14px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.76);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.55;
+    }
+
+    .badge b {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--pink);
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .footer-banner {
+      margin-top: 18px;
+      padding: 22px 18px;
+      border-radius: 8px;
+      color: #fff;
+      background: linear-gradient(90deg, #ff65aa, #ff4f9a);
+      box-shadow: 0 16px 30px rgba(255, 79, 154, 0.24);
+      text-align: center;
+      font-size: clamp(20px, 5.4vw, 30px);
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        background-attachment: scroll;
+      }
+
+      .page {
+        padding: 12px 10px 22px;
+      }
+
+      .hero {
+        min-height: 0;
+        padding: 24px 18px 22px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.94) 62%, rgba(255, 238, 248, 0.72) 100%);
+      }
+
+      .ribbon {
+        font-size: 14px;
+      }
+
+      .hero-copy {
+        max-width: none;
+        font-size: 15.5px;
+      }
+
+      .hero-character {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        display: block;
+        width: min(70vw, 260px);
+        margin: 12px auto -18px;
+        opacity: 0.9;
+      }
+
+      .section {
+        padding: 26px 18px;
+      }
+
+      .split,
+      .two-col,
+      .lesson-grid,
+      .badges {
+        grid-template-columns: 1fr;
+      }
+
+      .avatar {
+        max-width: 230px;
+        margin: 8px auto 0;
+      }
+
+      .skill-icons {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .rules {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .rule {
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        align-items: center;
+        min-height: 48px;
+        padding: 0;
+        border-right: 0;
+        text-align: left;
+      }
+
+      .rule b {
+        margin-bottom: 0;
+        text-align: center;
+      }
+
+      p,
+      li {
+        font-size: 15.5px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .skill-icons {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="index.html">← TOPへ戻る</a>
+
+    <header class="hero panel">
+      <span class="sparkle" aria-hidden="true"></span>
+      <img class="logo" src="image/7_ps_FV_logo.png" alt="P.S.歌ってみた部">
+      <h1>P.S.歌ってみた部とは？</h1>
+      <div class="ribbon">「推しみたいに歌ってみたい！」を応援する場所</div>
+      <p class="hero-copy">P.S.歌ってみた部は、小中学生向けの「歌ってみた × ボイストレーニング」コミュニティです。好きな曲を歌う楽しさを、安心して学びながら一緒にレベルアップしていきましょう♪</p>
+      <img class="hero-character" src="image/3_ps_pink.png" alt="マイクの前で歌う子どものイラスト">
+    </header>
+
+    <div class="content">
+      <section class="section section-pink panel">
+        <h2 class="violet"><span class="underline">歌を学ぶことを大切にしています</span></h2>
+        <div class="split">
+          <div>
+            <p>P.S.歌ってみた部は、ただ遊ぶだけのコミュニティではありません。</p>
+            <p>発声・リズム・音程・表現など、ボイストレーニングをベースに、楽しく歌の力を伸ばしていきます。</p>
+            <p>初心者の子も、人前で歌うのが苦手な子も大丈夫です。</p>
+          </div>
+          <div class="skill-icons" aria-label="学べること">
+            <div class="skill"><b>🎤</b>発声</div>
+            <div class="skill"><b>♪</b>リズム</div>
+            <div class="skill"><b>▰</b>音程</div>
+            <div class="skill"><b>♡</b>表現力</div>
+          </div>
+        </div>
+        <div class="message">楽しみながら、少しずつ自信をつけていきます！</div>
+      </section>
+
+      <section class="section panel">
+        <h2><span class="underline">♡ こんな子におすすめ</span></h2>
+        <div class="split">
+          <ul>
+            <li>歌うことが好き</li>
+            <li>推しみたいに歌ってみたい</li>
+            <li>高い声を出せるようになりたい</li>
+            <li>歌ってみたに興味がある</li>
+            <li>人前で歌うのが少し苦手</li>
+            <li>自分の声に自信を持ちたい</li>
+          </ul>
+          <img class="avatar" src="image/6_ps_purple.png" alt="歌うことを楽しむ子どものイラスト">
+        </div>
+      </section>
+
+      <section class="section section-violet panel">
+        <h2 class="violet"><span class="underline">♪ レッスンでできること</span></h2>
+        <div class="lesson-grid">
+          <div class="lesson mic">発声練習</div>
+          <div class="lesson high">高音練習</div>
+          <div class="lesson rhythm">リズム練習</div>
+          <div class="lesson heart">推し曲・好きな曲の練習</div>
+          <div class="lesson talk">歌ってみたの相談</div>
+          <div class="lesson movie">録音や投稿に向けたアドバイス</div>
+        </div>
+        <div class="message">歌を楽しみながら、少しずつ自信をつけていきます♪</div>
+      </section>
+
+      <section class="section section-violet panel">
+        <h2 class="violet"><span class="underline">安心して参加できる場所づくり</span></h2>
+        <p style="text-align: center;">P.S.歌ってみた部では、子どもたちが安心して楽しめるように、運営ルールを大切にしています。</p>
+        <div class="rules">
+          <div class="rule"><b>♡</b>悪口・仲間外れ禁止</div>
+          <div class="rule"><b>🔒</b>個人情報の共有禁止</div>
+          <div class="rule"><b>👥</b>参加者同士の個別連絡禁止</div>
+          <div class="rule"><b>✋</b>無理な発表はなし</div>
+          <div class="rule"><b>☺</b>人見知りでも参加OK</div>
+        </div>
+        <div class="message">「上手い・下手」ではなく、一人ひとりの“好き”と“成長”を大切にします。</div>
+      </section>
+
+      <section class="section section-mint panel">
+        <h2 class="mint"><span class="underline">保護者の方へ</span></h2>
+        <p>P.S.歌ってみた部は、お子さまが安心して「好き」を表現できる場所を目指しています。</p>
+        <p>歌い手文化やSNSに興味があるお子さまにも、安全に楽しめるよう、講師・運営がしっかりサポートします。</p>
+      </section>
+
+      <section class="cta panel">
+        <h2>まずは体験レッスンから<br>お気軽にご相談ください♪</h2>
+        <div class="badges">
+          <div class="badge"><b>▣</b>体験レッスン<br>受付中！</div>
+          <div class="badge"><b>●</b>質問・相談<br>いつでもOK！</div>
+          <div class="badge"><b>♡</b>お子さまのペースで<br>大丈夫！</div>
+        </div>
+        <div class="footer-banner">一緒に、歌う楽しさを見つけよう！</div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

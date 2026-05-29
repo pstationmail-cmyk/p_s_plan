@@ -92,11 +92,68 @@
     }
 
     .hero {
-      padding-top: 28px;
+      position: relative;
+      min-height: 0;
+      padding: 0;
       text-align: center;
-      background:
-        radial-gradient(circle at 90% 12%, rgba(255, 213, 90, .28), transparent 20%),
-        linear-gradient(180deg, #fff 0%, #fff7fa 100%);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .hero .section-number,
+    .hero .label {
+      display: none;
+    }
+
+    .fv-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+    }
+
+    .hero-ribbon {
+      position: relative;
+      z-index: 4;
+      display: inline-block;
+      width: min(100%, 394px);
+      margin: 0 auto 22px;
+      padding: 12px 14px 14px;
+      border: 4px solid #fff;
+      border-radius: 18px;
+      color: #fff;
+      background: linear-gradient(180deg, #ff67a8 0%, #f72586 100%);
+      box-shadow: 0 5px 14px rgba(240, 48, 132, .23);
+      font-size: clamp(22px, 6.4vw, 28px);
+      font-weight: 800;
+      line-height: 1.12;
+      text-shadow: 0 2px 0 rgba(211, 23, 105, .15);
+      white-space: nowrap;
+    }
+
+    .hero-ribbon::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      z-index: -1;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .58);
+      box-shadow: 0 0 12px rgba(255, 95, 162, .18);
+    }
+
+    .hero-ribbon::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -18px;
+      width: 26px;
+      height: 26px;
+      transform: translateX(-50%) rotate(45deg);
+      border-right: 4px solid #fff;
+      border-bottom: 4px solid #fff;
+      border-radius: 0 0 6px 0;
+      background: #f72586;
+      box-shadow: 5px 5px 10px rgba(240, 48, 132, .12);
     }
 
     .section-number {
@@ -170,42 +227,186 @@
       line-height: 1.75;
     }
 
+    .hero-title {
+      position: relative;
+      z-index: 4;
+      margin: 0 0 18px;
+      color: #101010;
+      font-size: clamp(39px, 11.8vw, 57px);
+      font-weight: 800;
+      line-height: 1.24;
+      letter-spacing: 0;
+      text-align: center;
+    }
+
+    .hero-title .pink {
+      color: #f70f84;
+    }
+
+    .hero-title .black {
+      display: inline-block;
+      color: #080808;
+      font-size: .76em;
+      white-space: nowrap;
+    }
+
+    .hero-title .small {
+      font-size: .76em;
+    }
+
+    .hero-kicker {
+      position: relative;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 12px;
+      align-items: center;
+      width: min(100%, 390px);
+      margin: 0 auto 10px;
+      color: #f70f84;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .hero-kicker::before,
+    .hero-kicker::after {
+      content: "";
+      height: 2px;
+      border-radius: 999px;
+      background-image: linear-gradient(90deg, #ffb8d6 40%, transparent 40%);
+      background-size: 9px 2px;
+    }
+
+    .hero-kicker span {
+      display: inline-block;
+      padding: 9px 24px;
+      background: #ffd8e7;
+      clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 10px 100%, 0 50%);
+    }
+
+    .hero-service {
+      position: relative;
+      z-index: 4;
+      margin: 0 auto 12px;
+      color: #f70f84;
+      font-size: clamp(21px, 5.6vw, 28px);
+      font-weight: 800;
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    .hero-service .times {
+      display: inline-block;
+      margin: 0 .2em;
+      color: #111;
+      font-weight: 400;
+    }
+
+    .hero-service .blue {
+      color: #0b84dd;
+    }
+
     .hero-visual {
       position: relative;
-      margin: 24px auto 18px;
-      min-height: 300px;
+      width: min(100%, 430px);
+      height: clamp(370px, 92vw, 510px);
+      margin: 6px auto 10px;
+      overflow: hidden;
     }
 
     .hero-visual img {
-      position: relative;
+      position: absolute;
+      right: -34px;
+      bottom: -14px;
       z-index: 2;
       display: block;
-      width: min(84%, 330px);
-      margin: 0 auto;
-      filter: drop-shadow(0 14px 24px rgba(0, 0, 0, .08));
+      width: min(108%, 466px);
+      height: 106%;
+      max-width: none;
+      object-fit: cover;
+      object-position: 65% 100%;
+      filter: drop-shadow(0 14px 20px rgba(86, 57, 74, .11));
     }
 
     .tag-stack {
       position: absolute;
-      left: 8px;
-      top: 34px;
+      left: 0;
+      top: 42px;
       z-index: 3;
       display: grid;
-      gap: 10px;
-      width: 120px;
+      gap: 0;
+      width: clamp(112px, 30vw, 150px);
+      padding: 14px 12px;
+      border: 2px solid #ffd2e4;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .95);
+      box-shadow: 0 8px 18px rgba(255, 95, 162, .18);
     }
 
     .tag {
       display: grid;
-      gap: 2px;
-      padding: 12px 10px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, .92);
-      box-shadow: var(--shadow);
+      place-items: center;
+      gap: 7px;
+      min-height: 86px;
+      padding: 6px 0 9px;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
       color: var(--ink);
-      font-size: 12px;
+      font-size: clamp(18px, 4.9vw, 24px);
       font-weight: 800;
+      line-height: 1.25;
       text-align: center;
+    }
+
+    .tag:not(:last-child) {
+      border-bottom: 3px dotted #f8b5d0;
+    }
+
+    .tag-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #ffe5f0;
+      color: #f70f84;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .tag:nth-child(2) .tag-icon {
+      background: #e8f4ff;
+      color: #0b84dd;
+    }
+
+    .tag:nth-child(3) .tag-icon {
+      background: #ffe5f0;
+      color: #f70f84;
+    }
+
+    .hero-note {
+      position: absolute;
+      z-index: 4;
+      color: #ff78b6;
+      font-size: 30px;
+      font-weight: 800;
+      opacity: .86;
+      pointer-events: none;
+    }
+
+    .hero-note.note-1 {
+      left: 55%;
+      top: 68%;
+      transform: rotate(-12deg);
+    }
+
+    .hero-note.note-2 {
+      right: 1%;
+      top: 36%;
+      color: #8f90ff;
+      transform: rotate(13deg);
     }
 
     .cta-button {
@@ -226,6 +427,26 @@
       animation: pulse 2.2s ease-in-out infinite;
     }
 
+    .hero .cta-button {
+      position: relative;
+      z-index: 5;
+      width: min(100%, 388px);
+      min-height: 70px;
+      margin: -16px auto 0;
+      border: 4px solid rgba(255, 255, 255, .9);
+      font-size: clamp(22px, 6.4vw, 31px);
+      box-shadow:
+        0 12px 24px rgba(237, 31, 121, .28),
+        0 2px 0 rgba(186, 15, 91, .16);
+    }
+
+    .hero .cta-button::after {
+      content: "›";
+      margin-left: 2px;
+      font-size: 1.35em;
+      line-height: 1;
+    }
+
     .line-badge {
       display: grid;
       place-items: center;
@@ -236,6 +457,46 @@
       color: #00b900;
       font-size: 12px;
       font-weight: 800;
+    }
+
+    .hero .line-badge {
+      width: 54px;
+      height: 54px;
+      font-size: 14px;
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .04);
+    }
+
+    .floating-trial {
+      position: fixed;
+      right: max(14px, calc((100vw - 480px) / 2 + 14px));
+      bottom: 18px;
+      z-index: 50;
+      display: grid;
+      place-items: center;
+      width: 112px;
+      height: 112px;
+      padding: 14px;
+      border: 4px solid rgba(255, 255, 255, .94);
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, #ff76b2 0%, #f02386 100%);
+      box-shadow: 0 12px 28px rgba(240, 35, 134, .28);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    .floating-trial::before {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 18px;
+      margin-bottom: 2px;
+      background: url("image/icon-music.svg") center / contain no-repeat;
+      filter: brightness(0) invert(1);
     }
 
     .card,
@@ -249,7 +510,15 @@
     }
 
     .recommend {
+      padding: 0;
       background: #fff;
+    }
+
+    .section-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
     }
 
     .bubble-list {
@@ -300,10 +569,10 @@
     }
 
     .promise-section {
-      margin-top: 72px;
-      padding: 72px 18px 38px;
+      margin-top: 18px;
+      padding: 34px 18px 38px;
       background: var(--blue-bg);
-      border-radius: 32px;
+      border-radius: 0;
     }
 
     .promise-list {
@@ -338,6 +607,7 @@
     }
 
     .about {
+      padding-top: 44px;
       text-align: center;
     }
 
@@ -349,24 +619,41 @@
     }
 
     .about-text p {
+      margin-bottom: 0;
       color: var(--ink);
-      font-weight: 700;
+      font-size: clamp(12px, 3.28vw, 15px);
+      font-weight: 800;
+      line-height: 2;
+      text-align: center;
+    }
+
+    .about-lead {
+      white-space: nowrap;
+    }
+
+    .about-highlight {
+      color: var(--pink);
+      font-weight: 800;
     }
 
     .icon-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 2px;
       margin-top: 16px;
+      margin-right: -18px;
+      margin-left: -18px;
     }
 
     .mini-icon {
       display: grid;
-      gap: 8px;
+      grid-template-rows: 94px 34px;
+      gap: 4px;
       place-items: center;
-      min-height: 96px;
-      padding: 12px 8px;
-      border-radius: 18px;
+      align-content: center;
+      min-height: 160px;
+      padding: 12px 1px;
+      border-radius: 14px;
       background: #fff;
       box-shadow: var(--shadow);
       color: var(--ink);
@@ -377,8 +664,33 @@
     }
 
     .mini-icon b {
-      font-size: 26px;
+      display: grid;
+      place-items: center;
+      width: 94px;
+      height: 94px;
       line-height: 1;
+    }
+
+    .mini-icon img {
+      display: block;
+      width: 94px;
+      height: 94px;
+      object-fit: contain;
+    }
+
+    .mini-icon .mini-label {
+      display: grid;
+      place-items: center;
+      min-height: 34px;
+    }
+
+    .about-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 18px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
     }
 
     .lesson-grid {
@@ -401,7 +713,15 @@
       margin: 0 auto 12px;
       border-radius: 50%;
       background: var(--pink-bg);
-      font-size: 30px;
+    }
+
+    .circle img,
+    .step-icon img,
+    .safe-icon img {
+      display: block;
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
     }
 
     .lesson-card:nth-child(2n) .circle {
@@ -459,8 +779,9 @@
       font-size: 13px;
     }
 
-    .step-emoji {
-      font-size: 28px;
+    .step-icon {
+      display: grid;
+      place-items: center;
       text-align: center;
     }
 
@@ -491,7 +812,6 @@
       height: 72px;
       border-radius: 50%;
       background: var(--pink-bg);
-      font-size: 34px;
     }
 
     .safe-card h3 {
@@ -561,10 +881,16 @@
     }
 
     .decor {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
       margin-top: 18px;
-      color: var(--pink);
-      font-size: 34px;
-      letter-spacing: 10px;
+    }
+
+    .decor img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
     }
 
     .fade-up {
@@ -613,34 +939,14 @@
       <section class="hero fade-up">
         <span class="section-number">1</span>
         <span class="label">P.S.歌ってみた部とは？</span>
-        <h1><strong>推しみたいに<br>歌ってみたい！</strong>を<br>安心して楽しめる場所</h1>
-        <p class="subcopy">小中学生向け<br>歌ってみた × ボイストレーニング</p>
-        <div class="hero-visual">
-          <div class="tag-stack">
-            <div class="tag">顔出し<br>不要</div>
-            <div class="tag">投稿<br>自由</div>
-            <div class="tag">保護者<br>相談OK</div>
-          </div>
-          <img src="image/3_ps_pink.png" alt="マイクとヘッドホンで歌う女の子のイラスト">
-        </div>
-        <a class="cta-button" href="https://lin.ee/v1xkP39"><span class="line-badge">LINE</span>LINEで相談する</a>
+        <img class="fv-image" src="image/fv-girl-mic.webp" alt="P.S.歌ってみた部とは？ 推しみたいに歌ってみたい！を安心して楽しめる場所">
       </section>
 
       <section class="recommend fade-up">
-        <span class="section-number">2</span>
-        <h2>こんなお子さまにおすすめ ♪</h2>
-        <div class="bubble-list">
-          <div class="bubble"><div class="bubble-icon">🎵</div><p>歌うことが好き！</p></div>
-          <div class="bubble"><div class="bubble-icon">💗</div><p>推しみたいに歌いたい！</p></div>
-          <div class="bubble"><div class="bubble-icon">🎧</div><p>歌ってみたに興味がある！</p></div>
-          <div class="bubble"><div class="bubble-icon">🌱</div><p>人前で歌うのは少し苦手…</p></div>
-          <div class="bubble"><div class="bubble-icon">✨</div><p>もっと上手になりたい！</p></div>
-          <div class="bubble"><div class="bubble-icon">😊</div><p>音楽が好き！</p></div>
-        </div>
+        <img class="section-image" src="image/lp2_osusume.webp" alt="こんなお子さまにおすすめ">
       </section>
 
       <section class="promise-section fade-up">
-        <span class="section-number">3</span>
         <h2>保護者が安心できる<br><strong>7つのお約束</strong></h2>
         <div class="promise-list">
           <div class="promise-card"><div class="promise-icon">◎</div><p>顔出しは必須ではありません</p></div>
@@ -655,58 +961,54 @@
       </section>
 
       <section class="about fade-up">
-        <span class="section-number">4</span>
         <h2>P.S.歌ってみた部とは？</h2>
         <div class="about-text">
-          <p>発声や歌唱などのボイストレーニングをベースに、歌ってみた・録音体験・作品投稿・音楽仲間との交流を楽しめる、小中学生向けの習い事です。</p>
+          <p><span class="about-lead">発声や歌唱などのボイストレーニングをベースに、</span><br><span class="about-highlight">”歌ってみた・録音体験・作品投稿・<br>音楽仲間との交流”</span> を楽しめる<br>小中学生向けの習い事です。</p>
         </div>
         <div class="icon-row">
-          <div class="mini-icon"><b>🎤</b>ボイトレ</div>
-          <div class="mini-icon"><b>🎧</b>録音体験</div>
-          <div class="mini-icon"><b>▶</b>作品投稿</div>
-          <div class="mini-icon"><b>🤝</b>交流</div>
+          <div class="mini-icon"><b><img src="image/voice_training_icon.svg" alt=""></b><span class="mini-label">ボイトレ</span></div>
+          <div class="mini-icon"><b><img src="image/recording_experience_icon.svg" alt=""></b><span class="mini-label">録音体験</span></div>
+          <div class="mini-icon"><b><img src="image/work_production_icon.svg" alt=""></b><span class="mini-label">作品制作</span></div>
+          <div class="mini-icon"><b><img src="image/music_friends_icon.svg" alt=""></b><span class="mini-label">音楽仲間<br>との交流</span></div>
         </div>
+        <img class="about-photo" src="image/group-lesson.webp" alt="グループレッスンの様子">
       </section>
 
       <section class="fade-up">
-        <span class="section-number">5</span>
         <h2>レッスンでできること</h2>
         <div class="lesson-grid">
-          <div class="lesson-card"><div class="circle">🎤</div><h3>発声練習</h3><p>きれいな声の出し方や喉にやさしい発声を身につけます。</p></div>
-          <div class="lesson-card"><div class="circle">😊</div><h3>表現練習</h3><p>歌詞の気持ちや世界観を大切に、表現力を育てます。</p></div>
-          <div class="lesson-card"><div class="circle">🎵</div><h3>リズム練習</h3><p>リズム感を育てて、ノリよく歌える力をつけます。</p></div>
-          <div class="lesson-card"><div class="circle">💚</div><h3>推し曲練習</h3><p>自分の好きな曲で楽しくレベルアップできます。</p></div>
-          <div class="lesson-card"><div class="circle">🎙</div><h3>録音体験</h3><p>実際の機材を使って録音を体験します。</p></div>
-          <div class="lesson-card"><div class="circle">▻</div><h3>歌ってみた制作</h3><p>歌ってみた作品の制作をサポートします。</p></div>
-          <div class="lesson-card"><div class="circle">🎚</div><h3>小学生向けMIX練習</h3><p>慣れてきたらMIXの基礎を楽しく学べます。</p></div>
-          <div class="lesson-card"><div class="circle">✎</div><h3>オリジナル曲制作サポート</h3><p>作詞・作曲にも挑戦できるサポートがあります。</p></div>
+          <div class="lesson-card"><div class="circle"><img src="image/icon-microphone.svg" alt=""></div><h3>発声練習</h3><p>きれいな声の出し方や喉にやさしい発声を身につけます。</p></div>
+          <div class="lesson-card"><div class="circle"><img src="image/icon-smile.svg" alt=""></div><h3>表現練習</h3><p>歌詞の気持ちや世界観を大切に、表現力を育てます。</p></div>
+          <div class="lesson-card"><div class="circle"><img src="image/icon-music.svg" alt=""></div><h3>リズム練習</h3><p>リズム感を育てて、ノリよく歌える力をつけます。</p></div>
+          <div class="lesson-card"><div class="circle"><img src="image/icon-heart.svg" alt=""></div><h3>推し曲練習</h3><p>自分の好きな曲で楽しくレベルアップできます。</p></div>
+          <div class="lesson-card"><div class="circle"><img src="image/icon-microphone.svg" alt=""></div><h3>録音体験</h3><p>実際の機材を使って録音を体験します。</p></div>
+          <div class="lesson-card"><div class="circle"><img src="image/icon-video.svg" alt=""></div><h3>歌ってみた制作</h3><p>歌ってみた作品の制作をサポートします。</p></div>
+          <div class="lesson-card"><div class="circle"><img src="image/icon-sliders.svg" alt=""></div><h3>小学生向けMIX練習</h3><p>慣れてきたらMIXの基礎を楽しく学べます。</p></div>
+          <div class="lesson-card"><div class="circle"><img src="image/icon-pencil.svg" alt=""></div><h3>オリジナル曲制作サポート</h3><p>作詞・作曲にも挑戦できるサポートがあります。</p></div>
         </div>
       </section>
 
       <section class="fade-up">
-        <span class="section-number">6</span>
         <h2>1日のレッスンイメージ</h2>
         <div class="step-list">
-          <div class="timeline-item"><div class="step-no">1</div><div><h3>あいさつ</h3><p>今日の目標を共有します</p></div><div class="step-emoji">👋</div></div>
-          <div class="timeline-item"><div class="step-no">2</div><div><h3>好きな曲で発声練習</h3><p>声を出して、楽しく準備</p></div><div class="step-emoji">🎧</div></div>
-          <div class="timeline-item"><div class="step-no">3</div><div><h3>課題を発見して改善指導</h3><p>一人ひとりに合わせてサポート</p></div><div class="step-emoji">📋</div></div>
-          <div class="timeline-item"><div class="step-no">4</div><div><h3>お手本を元に実践</h3><p>実際に歌ってスキルアップ</p></div><div class="step-emoji">🎤</div></div>
-          <div class="timeline-item"><div class="step-no">5</div><div><h3>振り返り</h3><p>今日の気づきをシェアします</p></div><div class="step-emoji">💗</div></div>
+          <div class="timeline-item"><div class="step-no">1</div><div><h3>あいさつ</h3><p>今日の目標を共有します</p></div><div class="step-icon"><img src="image/icon-hand.svg" alt=""></div></div>
+          <div class="timeline-item"><div class="step-no">2</div><div><h3>好きな曲で発声練習</h3><p>声を出して、楽しく準備</p></div><div class="step-icon"><img src="image/icon-headphones.svg" alt=""></div></div>
+          <div class="timeline-item"><div class="step-no">3</div><div><h3>課題を発見して改善指導</h3><p>一人ひとりに合わせてサポート</p></div><div class="step-icon"><img src="image/icon-clipboard.svg" alt=""></div></div>
+          <div class="timeline-item"><div class="step-no">4</div><div><h3>お手本を元に実践</h3><p>実際に歌ってスキルアップ</p></div><div class="step-icon"><img src="image/icon-microphone.svg" alt=""></div></div>
+          <div class="timeline-item"><div class="step-no">5</div><div><h3>振り返り</h3><p>今日の気づきをシェアします</p></div><div class="step-icon"><img src="image/icon-heart.svg" alt=""></div></div>
         </div>
       </section>
 
       <section class="safe-section fade-up">
-        <span class="section-number">7</span>
         <h2>歌ってみた体験は<br><strong>SNSへの顔出しなし</strong>でも<br>楽しめます♪</h2>
         <div class="safe-list">
-          <div class="safe-card"><div class="safe-icon">🎭</div><div><h3>顔出しは必要ありません</h3><p>自分らしく、安心して楽しめます。</p></div></div>
-          <div class="safe-card"><div class="safe-icon">▶</div><div><h3>投稿は希望者のみ</h3><p>強制に投稿する必要はありません。</p></div></div>
-          <div class="safe-card"><div class="safe-icon">👤</div><div><h3>イラスト・アバター利用OK</h3><p>自分らしいスタイルで活動できます。</p></div></div>
+          <div class="safe-card"><div class="safe-icon"><img src="image/icon-mask.svg" alt=""></div><div><h3>顔出しは必要ありません</h3><p>自分らしく、安心して楽しめます。</p></div></div>
+          <div class="safe-card"><div class="safe-icon"><img src="image/icon-video.svg" alt=""></div><div><h3>投稿は希望者のみ</h3><p>強制に投稿する必要はありません。</p></div></div>
+          <div class="safe-card"><div class="safe-icon"><img src="image/icon-user.svg" alt=""></div><div><h3>イラスト・アバター利用OK</h3><p>自分らしいスタイルで活動できます。</p></div></div>
         </div>
       </section>
 
       <section class="teacher fade-up">
-        <span class="section-number">8</span>
         <h2>先生紹介</h2>
         <img class="teacher-photo" src="image/teacher-profile.webp" alt="谷口剛気の写真">
         <div class="teacher-name">谷口 剛気</div>
@@ -720,10 +1022,11 @@
         <h2>まずは<br><strong>体験レッスン・<br>親子で安心説明会へ</strong></h2>
         <p>LINEからお気軽にご相談ください♪</p>
         <a class="cta-button" href="https://lin.ee/v1xkP39"><span class="line-badge">LINE</span>LINEで相談する</a>
-        <div class="decor">♪ ♡ 🎤</div>
+        <div class="decor" aria-hidden="true"><img src="image/icon-music.svg" alt=""><img src="image/icon-heart.svg" alt=""><img src="image/icon-microphone.svg" alt=""></div>
       </section>
     </main>
   </div>
+  <a class="floating-trial" href="https://lin.ee/v1xkP39" aria-label="体験レッスンに参加">体験<br>レッスンに<br>参加</a>
 
   <script>
     const observer = new IntersectionObserver((entries) => {

@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>安心・安全のルール | P.S.歌ってみた部</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #282431;
+      --muted: #70685f;
+      --cream: #fff8ee;
+      --paper: rgba(255, 252, 246, 0.95);
+      --beige: #f6ead8;
+      --line: rgba(181, 126, 83, 0.24);
+      --terracotta: #b96f56;
+      --rose: #d97886;
+      --gold: #d2a24d;
+      --sage: #7f9f83;
+      --shadow: 0 18px 45px rgba(153, 110, 78, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        linear-gradient(rgba(255, 250, 242, 0.88), rgba(255, 252, 247, 0.96)),
+        url("image/2_ps_FV_back ground.png") top center / cover fixed,
+        var(--cream);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(100%, 900px);
+      margin: 0 auto;
+      padding: 18px 16px 32px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-bottom: 8px;
+      color: var(--terracotta);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 36px 34px 32px;
+      background:
+        linear-gradient(110deg, rgba(255, 252, 246, 0.98) 0%, rgba(255, 249, 239, 0.96) 58%, rgba(248, 232, 211, 0.84) 100%);
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      color: rgba(210, 162, 77, 0.38);
+      font-size: 34px;
+      font-weight: 900;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      content: "✦";
+      left: 24px;
+      top: 24px;
+    }
+
+    .hero::after {
+      content: "♪";
+      right: 30px;
+      top: 28px;
+      color: rgba(185, 111, 86, 0.34);
+      transform: rotate(18deg);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 16px;
+      color: var(--ink);
+      font-size: clamp(34px, 8vw, 62px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 680px;
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 17px;
+      font-weight: 750;
+      line-height: 1.9;
+    }
+
+    .ribbon {
+      display: inline-block;
+      max-width: 100%;
+      margin-top: 10px;
+      padding: 10px 18px;
+      color: #fff;
+      background: linear-gradient(90deg, #d9956c, #c77a62);
+      border-radius: 8px;
+      box-shadow: 0 10px 20px rgba(185, 111, 86, 0.18);
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.6;
+    }
+
+    .content {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .rule-card {
+      position: relative;
+      overflow: hidden;
+      padding: 24px 22px 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 252, 246, 0.94);
+      box-shadow: 0 10px 24px rgba(153, 110, 78, 0.08);
+    }
+
+    .rule-card.wide {
+      grid-column: 1 / -1;
+    }
+
+    .rule-card::before {
+      content: attr(data-number);
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 14px;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, var(--terracotta), var(--rose));
+      font-size: 22px;
+      font-weight: 900;
+      box-shadow: 0 10px 18px rgba(185, 111, 86, 0.18);
+    }
+
+    .rule-card h2 {
+      margin-bottom: 14px;
+      color: var(--terracotta);
+      font-size: clamp(21px, 4.8vw, 28px);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin-bottom: 12px;
+      font-size: 16px;
+      font-weight: 650;
+      line-height: 1.9;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      padding-left: 24px;
+      font-size: 16px;
+      font-weight: 750;
+      line-height: 1.7;
+    }
+
+    li::before {
+      content: "・";
+      position: absolute;
+      left: 4px;
+      color: var(--terracotta);
+      font-weight: 900;
+    }
+
+    .parent-note,
+    .promise-image,
+    .cta {
+      padding: 30px 28px;
+    }
+
+    .parent-note {
+      background:
+        linear-gradient(120deg, rgba(255, 252, 246, 0.96), rgba(237, 245, 226, 0.84)),
+        var(--paper);
+    }
+
+    .parent-note h2,
+    .promise-image h2,
+    .cta h2 {
+      margin-bottom: 16px;
+      color: var(--terracotta);
+      font-size: clamp(25px, 6vw, 38px);
+      line-height: 1.35;
+      letter-spacing: 0;
+      text-align: center;
+    }
+
+    .parent-note ul {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 16px;
+    }
+
+    .promise-image {
+      text-align: center;
+      background:
+        linear-gradient(120deg, rgba(255, 252, 246, 0.96), rgba(251, 238, 222, 0.9)),
+        var(--paper);
+    }
+
+    .promise-image p {
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--muted);
+    }
+
+    .promise-image img {
+      display: block;
+      width: min(100%, 760px);
+      height: auto;
+      margin: 22px auto 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 14px 32px rgba(153, 110, 78, 0.14);
+    }
+
+    .cta {
+      text-align: center;
+      background:
+        linear-gradient(120deg, rgba(255, 252, 246, 0.96), rgba(237, 245, 226, 0.84)),
+        var(--paper);
+    }
+
+    .cta p {
+      max-width: 640px;
+      margin: 0 auto 20px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 14px 22px;
+      border-radius: 8px;
+      color: #fff;
+      background: linear-gradient(90deg, #d9956c, #c77a62);
+      box-shadow: 0 12px 24px rgba(185, 111, 86, 0.2);
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        background-attachment: scroll;
+      }
+
+      .page {
+        padding: 12px 10px 24px;
+      }
+
+      .hero {
+        padding: 30px 20px 24px;
+      }
+
+      .rules-grid,
+      .parent-note ul {
+        grid-template-columns: 1fr;
+      }
+
+      .rule-card,
+      .parent-note,
+      .promise-image,
+      .cta {
+        padding: 24px 18px;
+      }
+
+      p,
+      li {
+        font-size: 15.5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="index.html">← TOPへ戻る</a>
+
+    <header class="hero panel">
+      <h1>安心・安全のルール</h1>
+      <p class="subtitle">P.S.歌ってみた部では、お子さまが安心して音楽を学べる環境づくりを大切にしています。</p>
+      <p class="subtitle">保護者の皆さまにも安心してご参加いただけるよう、以下のお約束を設けています。</p>
+      <div class="ribbon">お子さまのペースと安全を大切に運営します</div>
+    </header>
+
+    <section class="content rules-grid" aria-label="安心・安全の7つのルール">
+      <article class="rule-card" data-number="1">
+        <h2>お互いを大切にしましょう</h2>
+        <p>歌の経験や得意なことは人それぞれです。</p>
+        <ul>
+          <li>悪口や陰口</li>
+          <li>相手を傷つける言葉</li>
+          <li>からかい行為</li>
+          <li>仲間外れ</li>
+        </ul>
+        <p>みんなが気持ちよく参加できる環境を大切にしています。</p>
+      </article>
+
+      <article class="rule-card" data-number="2">
+        <h2>個人情報は公開しないようにしましょう</h2>
+        <p>安全のため、個人が特定できる情報は共有しないようにしてください。</p>
+        <ul>
+          <li>住所</li>
+          <li>学校名</li>
+          <li>電話番号</li>
+          <li>SNSアカウント</li>
+          <li>その他個人が特定できる情報</li>
+        </ul>
+      </article>
+
+      <article class="rule-card" data-number="3">
+        <h2>保護者の方と相談しながら参加しましょう</h2>
+        <p>活動に関することは、保護者の方と相談しながら進めていただきます。</p>
+        <p>無理な活動や投稿を求めることはありません。</p>
+        <p>お子さまのペースを大切にしながら活動していきます。</p>
+      </article>
+
+      <article class="rule-card" data-number="4">
+        <h2>部員同士の個人的なやり取りは行いません</h2>
+        <p>P.S.歌ってみた部では、安全面を考慮し、部員同士での個人的な連絡先交換や、SNS・DM等でのやり取りは行いません。</p>
+        <p>交流は、グループレッスンの時間内、運営が管理するLINEオープンチャット内に限定しています。</p>
+        <p>LINEオープンチャットでは、運営からのお題や投げかけに対して感想や作品を投稿する形で交流を行います。</p>
+      </article>
+
+      <article class="rule-card" data-number="5">
+        <h2>写真・動画の取り扱いについて</h2>
+        <p>活動中に撮影した写真や動画は、本人・保護者の許可なく公開することはありません。</p>
+        <p>また、他の参加者が写っている写真や動画を無断でSNS等へ投稿することもご遠慮ください。</p>
+      </article>
+
+      <article class="rule-card" data-number="6">
+        <h2>歌が好きな気持ちを大切にしましょう</h2>
+        <p>P.S.歌ってみた部は、プロを目指す人だけの場所ではありません。</p>
+        <p>歌が好き。歌ってみたい。もっと上手になりたい。</p>
+        <p>そんな気持ちを応援する場所です。他の人と比べるのではなく、自分のペースで楽しみながら成長していきましょう。</p>
+      </article>
+
+      <article class="rule-card wide" data-number="7">
+        <h2>困ったことがあればすぐに相談してください</h2>
+        <p>活動中に不安なことや困ったことがあれば、一人で抱え込まずにご相談ください。</p>
+        <p>保護者の方からのご相談も歓迎しております。</p>
+        <p>安心して活動できる環境づくりのため、運営がサポートいたします。</p>
+      </article>
+    </section>
+
+    <section class="content">
+      <div class="parent-note panel">
+        <h2>保護者の皆さまへ</h2>
+        <p>P.S.歌ってみた部は、発声や歌唱などのボイストレーニングをベースに、音楽を楽しむ活動です。</p>
+        <ul>
+          <li>歌ってみた</li>
+          <li>録音体験</li>
+          <li>歌唱力向上</li>
+          <li>作品投稿</li>
+          <li>グループレッスンでの交流</li>
+        </ul>
+        <p>お子さま一人ひとりのペースを大切にしながら、安全面に配慮した運営を行っております。</p>
+        <p>ご不明な点やご不安なことがございましたら、お気軽にご相談ください。</p>
+      </div>
+
+      <div class="promise-image panel">
+        <h2>7つのお約束</h2>
+        <p>P.S.歌ってみた部では、お子さまが安心して音楽を学べる環境づくりを大切にしています。</p>
+        <p>保護者の皆さまにも安心してご参加いただけるよう、以下のお約束を設けています。</p>
+        <img src="image/11_7つのお約束.webp" alt="保護者の皆さまへ 安心してご参加いただくための7つのお約束">
+      </div>
+
+      <div class="cta panel">
+        <h2>まずは体験レッスン・親子で安心説明会へ</h2>
+        <p>不安な点を相談しながら、お子さまに合う参加方法を一緒に確認できます。</p>
+        <a class="cta-link" href="https://lin.ee/v1xkP39">LINEで相談・申し込みをする</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

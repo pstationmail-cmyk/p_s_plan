@@ -4,34 +4,737 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>P.S.歌ってみた部</title>
-  <link rel="stylesheet" href="line-article.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #ff5fa2;
+      --pink-dark: #ee3f8d;
+      --blue: #6ec8ff;
+      --yellow: #ffd55a;
+      --green: #65d6b3;
+      --purple: #b98eff;
+      --ink: #2d2a32;
+      --muted: #716b78;
+      --line: #f3e8ee;
+      --pink-bg: #fff7fa;
+      --blue-bg: #f6faff;
+      --cream-bg: #fffdf4;
+      --shadow: 0 4px 20px rgba(0, 0, 0, .04);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      max-width: 480px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      padding: 0 18px;
+      background: rgba(255, 255, 255, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .hamburger {
+      display: grid;
+      gap: 5px;
+      width: 28px;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--pink);
+    }
+
+    section {
+      padding: 72px 18px 0;
+    }
+
+    .hero {
+      padding-top: 28px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 90% 12%, rgba(255, 213, 90, .28), transparent 20%),
+        linear-gradient(180deg, #fff 0%, #fff7fa 100%);
+    }
+
+    .section-number {
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 14px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--pink);
+      font-size: 14px;
+      font-weight: 800;
+      box-shadow: 0 6px 16px rgba(255, 95, 162, .24);
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--pink);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 16px;
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.38;
+      letter-spacing: 0;
+    }
+
+    h1 strong,
+    h2 strong {
+      color: var(--pink);
+    }
+
+    h2 {
+      margin-bottom: 26px;
+      font-size: 25px;
+      font-weight: 800;
+      line-height: 1.45;
+      text-align: center;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .subcopy {
+      color: #3f6e95;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.75;
+    }
+
+    .hero-visual {
+      position: relative;
+      margin: 24px auto 18px;
+      min-height: 300px;
+    }
+
+    .hero-visual img {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: min(84%, 330px);
+      margin: 0 auto;
+      filter: drop-shadow(0 14px 24px rgba(0, 0, 0, .08));
+    }
+
+    .tag-stack {
+      position: absolute;
+      left: 8px;
+      top: 34px;
+      z-index: 3;
+      display: grid;
+      gap: 10px;
+      width: 120px;
+    }
+
+    .tag {
+      display: grid;
+      gap: 2px;
+      padding: 12px 10px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .92);
+      box-shadow: var(--shadow);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .cta-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 64px;
+      padding: 16px 20px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(90deg, var(--pink), var(--pink-dark));
+      box-shadow: 0 10px 24px rgba(255, 95, 162, .28);
+      font-size: 18px;
+      font-weight: 800;
+      text-decoration: none;
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    .line-badge {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #fff;
+      color: #00b900;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .card,
+    .promise-card,
+    .lesson-card,
+    .timeline-item,
+    .safe-card {
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .recommend {
+      background: #fff;
+    }
+
+    .bubble-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .bubble {
+      position: relative;
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .bubble:nth-child(even) {
+      grid-template-columns: 1fr 64px;
+      background: var(--blue-bg);
+    }
+
+    .bubble:nth-child(even) .bubble-icon {
+      order: 2;
+    }
+
+    .bubble p {
+      margin: 0;
+      color: var(--pink);
+      font-weight: 800;
+    }
+
+    .bubble:nth-child(even) p {
+      color: #3985b8;
+    }
+
+    .bubble-icon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--pink-bg);
+      font-size: 28px;
+    }
+
+    .promise-section {
+      margin-top: 72px;
+      padding: 72px 18px 38px;
+      background: var(--blue-bg);
+      border-radius: 32px;
+    }
+
+    .promise-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .promise-card {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .promise-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #eaf6ff;
+      color: #3098d8;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .promise-card p {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .about {
+      text-align: center;
+    }
+
+    .about-text {
+      padding: 24px;
+      border-radius: 24px;
+      background: var(--pink-bg);
+      box-shadow: var(--shadow);
+    }
+
+    .about-text p {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .icon-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .mini-icon {
+      display: grid;
+      gap: 8px;
+      place-items: center;
+      min-height: 96px;
+      padding: 12px 8px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .mini-icon b {
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .lesson-card {
+      min-height: 190px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+
+    .lesson-card .circle {
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      background: var(--pink-bg);
+      font-size: 30px;
+    }
+
+    .lesson-card:nth-child(2n) .circle {
+      background: var(--cream-bg);
+    }
+
+    .lesson-card:nth-child(3n) .circle {
+      background: var(--blue-bg);
+    }
+
+    .lesson-card p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .step-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 40px 1fr 42px;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .timeline-item:not(:last-child)::after {
+      content: "↓";
+      position: absolute;
+      left: 50%;
+      bottom: -16px;
+      transform: translateX(-50%);
+      color: var(--pink);
+      font-weight: 800;
+    }
+
+    .step-no {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--pink);
+      font-weight: 800;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .step-emoji {
+      font-size: 28px;
+      text-align: center;
+    }
+
+    .safe-section {
+      margin-top: 72px;
+      padding: 72px 18px 38px;
+      background: var(--pink-bg);
+      border-radius: 32px;
+    }
+
+    .safe-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .safe-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .safe-icon {
+      display: grid;
+      place-items: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--pink-bg);
+      font-size: 34px;
+    }
+
+    .safe-card h3 {
+      color: var(--pink);
+    }
+
+    .teacher {
+      text-align: center;
+    }
+
+    .teacher-photo {
+      width: 190px;
+      height: 190px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      box-shadow: var(--shadow);
+    }
+
+    .teacher-name {
+      margin-bottom: 16px;
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .final-cta {
+      margin: 72px 18px 32px;
+      padding: 34px 22px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255, 247, 250, .92), rgba(255, 247, 250, 1)),
+        var(--pink-bg);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .garland {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .flag {
+      width: 26px;
+      height: 18px;
+      border-radius: 3px 3px 10px 10px;
+      background: var(--yellow);
+    }
+
+    .flag:nth-child(2) {
+      background: var(--blue);
+    }
+
+    .flag:nth-child(3) {
+      background: var(--pink);
+    }
+
+    .flag:nth-child(4) {
+      background: var(--green);
+    }
+
+    .flag:nth-child(5) {
+      background: var(--purple);
+    }
+
+    .decor {
+      margin-top: 18px;
+      color: var(--pink);
+      font-size: 34px;
+      letter-spacing: 10px;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .fade-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.025);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta-button {
+        animation: none;
+      }
+
+      .fade-up {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main class="page">
-    <header class="hero">
-      <img class="logo" src="image/7_ps_FV_logo.png" alt="P.S.歌ってみた部">
-      <h1>推しみたいに、歌ってみよう！</h1>
-      <p class="lead">発声や歌唱などのボイストレーニングをベースに、歌ってみた・録音・MIX・投稿・オリジナル曲制作まで体験できる、小中学生向けの歌い手体験コミュニティです。</p>
-      <div class="ribbon">顔出しなしOK。親御さま面談必須。投稿は任意です。</div>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">P.S.歌ってみた部 ♪</div>
+      <div class="hamburger" aria-hidden="true"><span></span><span></span><span></span></div>
     </header>
 
-    <section class="content">
-      <div class="section guardian">
-        <h2>まずはLINEから相談・予約</h2>
-        <p>体験レッスンはオンライン無料、オフライン1,000円です。</p>
-        <p>P.S.歌ってみた部 親子説明会はオンライン・オフラインともに無料です。</p>
-        <p>入会金は無料。入会前には必ず親子面談を行い、料金やルールを確認してから手続きに進みます。</p>
-      </div>
-    </section>
+    <main>
+      <section class="hero fade-up">
+        <span class="section-number">1</span>
+        <span class="label">P.S.歌ってみた部とは？</span>
+        <h1><strong>推しみたいに<br>歌ってみたい！</strong>を<br>安心して楽しめる場所</h1>
+        <p class="subcopy">小中学生向け<br>歌ってみた × ボイストレーニング</p>
+        <div class="hero-visual">
+          <div class="tag-stack">
+            <div class="tag">顔出し<br>不要</div>
+            <div class="tag">投稿<br>自由</div>
+            <div class="tag">保護者<br>相談OK</div>
+          </div>
+          <img src="image/3_ps_pink.png" alt="マイクとヘッドホンで歌う女の子のイラスト">
+        </div>
+        <a class="cta-button" href="https://lin.ee/v1xkP39"><span class="line-badge">LINE</span>LINEで相談する</a>
+      </section>
 
-    <section class="content menu-grid" aria-label="リッチメニュー">
-      <a class="menu-card" href="https://lin.ee/v1xkP39">体験予約</a>
-      <a class="menu-card" href="about.html">P.S.歌ってみた部とは</a>
-      <a class="menu-card" href="lessons.html">レッスン内容</a>
-      <a class="menu-card" href="teachers.html">先生紹介</a>
-      <a class="menu-card" href="faq.html">よくある質問</a>
-      <a class="menu-card" href="rules.html">安心・安全のルール</a>
-    </section>
-  </main>
+      <section class="recommend fade-up">
+        <span class="section-number">2</span>
+        <h2>こんなお子さまにおすすめ ♪</h2>
+        <div class="bubble-list">
+          <div class="bubble"><div class="bubble-icon">🎵</div><p>歌うことが好き！</p></div>
+          <div class="bubble"><div class="bubble-icon">💗</div><p>推しみたいに歌いたい！</p></div>
+          <div class="bubble"><div class="bubble-icon">🎧</div><p>歌ってみたに興味がある！</p></div>
+          <div class="bubble"><div class="bubble-icon">🌱</div><p>人前で歌うのは少し苦手…</p></div>
+          <div class="bubble"><div class="bubble-icon">✨</div><p>もっと上手になりたい！</p></div>
+          <div class="bubble"><div class="bubble-icon">😊</div><p>音楽が好き！</p></div>
+        </div>
+      </section>
+
+      <section class="promise-section fade-up">
+        <span class="section-number">3</span>
+        <h2>保護者が安心できる<br><strong>7つのお約束</strong></h2>
+        <div class="promise-list">
+          <div class="promise-card"><div class="promise-icon">◎</div><p>顔出しは必須ではありません</p></div>
+          <div class="promise-card"><div class="promise-icon">▶</div><p>作品投稿は任意です</p></div>
+          <div class="promise-card"><div class="promise-icon">♪</div><p>芸能活動を目的とした団体ではありません</p></div>
+          <div class="promise-card"><div class="promise-icon">□</div><p>高額な機材購入は必要ありません</p></div>
+          <div class="promise-card"><div class="promise-icon">×</div><p>個別DMは禁止しています</p></div>
+          <div class="promise-card"><div class="promise-icon">鍵</div><p>個人情報交換は禁止しています</p></div>
+          <div class="promise-card"><div class="promise-icon">相</div><p>保護者からいつでも相談できます</p></div>
+        </div>
+        <p>お子さまが安心して、のびのびと楽しめる環境づくりを大切にしています。</p>
+      </section>
+
+      <section class="about fade-up">
+        <span class="section-number">4</span>
+        <h2>P.S.歌ってみた部とは？</h2>
+        <div class="about-text">
+          <p>発声や歌唱などのボイストレーニングをベースに、歌ってみた・録音体験・作品投稿・音楽仲間との交流を楽しめる、小中学生向けの習い事です。</p>
+        </div>
+        <div class="icon-row">
+          <div class="mini-icon"><b>🎤</b>ボイトレ</div>
+          <div class="mini-icon"><b>🎧</b>録音体験</div>
+          <div class="mini-icon"><b>▶</b>作品投稿</div>
+          <div class="mini-icon"><b>🤝</b>交流</div>
+        </div>
+      </section>
+
+      <section class="fade-up">
+        <span class="section-number">5</span>
+        <h2>レッスンでできること</h2>
+        <div class="lesson-grid">
+          <div class="lesson-card"><div class="circle">🎤</div><h3>発声練習</h3><p>きれいな声の出し方や喉にやさしい発声を身につけます。</p></div>
+          <div class="lesson-card"><div class="circle">😊</div><h3>表現練習</h3><p>歌詞の気持ちや世界観を大切に、表現力を育てます。</p></div>
+          <div class="lesson-card"><div class="circle">🎵</div><h3>リズム練習</h3><p>リズム感を育てて、ノリよく歌える力をつけます。</p></div>
+          <div class="lesson-card"><div class="circle">💚</div><h3>推し曲練習</h3><p>自分の好きな曲で楽しくレベルアップできます。</p></div>
+          <div class="lesson-card"><div class="circle">🎙</div><h3>録音体験</h3><p>実際の機材を使って録音を体験します。</p></div>
+          <div class="lesson-card"><div class="circle">▻</div><h3>歌ってみた制作</h3><p>歌ってみた作品の制作をサポートします。</p></div>
+          <div class="lesson-card"><div class="circle">🎚</div><h3>小学生向けMIX練習</h3><p>慣れてきたらMIXの基礎を楽しく学べます。</p></div>
+          <div class="lesson-card"><div class="circle">✎</div><h3>オリジナル曲制作サポート</h3><p>作詞・作曲にも挑戦できるサポートがあります。</p></div>
+        </div>
+      </section>
+
+      <section class="fade-up">
+        <span class="section-number">6</span>
+        <h2>1日のレッスンイメージ</h2>
+        <div class="step-list">
+          <div class="timeline-item"><div class="step-no">1</div><div><h3>あいさつ</h3><p>今日の目標を共有します</p></div><div class="step-emoji">👋</div></div>
+          <div class="timeline-item"><div class="step-no">2</div><div><h3>好きな曲で発声練習</h3><p>声を出して、楽しく準備</p></div><div class="step-emoji">🎧</div></div>
+          <div class="timeline-item"><div class="step-no">3</div><div><h3>課題を発見して改善指導</h3><p>一人ひとりに合わせてサポート</p></div><div class="step-emoji">📋</div></div>
+          <div class="timeline-item"><div class="step-no">4</div><div><h3>お手本を元に実践</h3><p>実際に歌ってスキルアップ</p></div><div class="step-emoji">🎤</div></div>
+          <div class="timeline-item"><div class="step-no">5</div><div><h3>振り返り</h3><p>今日の気づきをシェアします</p></div><div class="step-emoji">💗</div></div>
+        </div>
+      </section>
+
+      <section class="safe-section fade-up">
+        <span class="section-number">7</span>
+        <h2>歌ってみた体験は<br><strong>SNSへの顔出しなし</strong>でも<br>楽しめます♪</h2>
+        <div class="safe-list">
+          <div class="safe-card"><div class="safe-icon">🎭</div><div><h3>顔出しは必要ありません</h3><p>自分らしく、安心して楽しめます。</p></div></div>
+          <div class="safe-card"><div class="safe-icon">▶</div><div><h3>投稿は希望者のみ</h3><p>強制に投稿する必要はありません。</p></div></div>
+          <div class="safe-card"><div class="safe-icon">👤</div><div><h3>イラスト・アバター利用OK</h3><p>自分らしいスタイルで活動できます。</p></div></div>
+        </div>
+      </section>
+
+      <section class="teacher fade-up">
+        <span class="section-number">8</span>
+        <h2>先生紹介</h2>
+        <img class="teacher-photo" src="image/teacher-profile.webp" alt="谷口剛気の写真">
+        <div class="teacher-name">谷口 剛気</div>
+        <p>音楽活動を続けながらボイストレーナーとして活動しています。</p>
+        <p>放課後等デイサービスでの指導経験や地域イベント運営なども行っています。</p>
+        <p>子どもたちが安心して歌を楽しめる場所づくりを大切にしています。</p>
+      </section>
+
+      <section class="final-cta fade-up">
+        <div class="garland"><span class="flag"></span><span class="flag"></span><span class="flag"></span><span class="flag"></span><span class="flag"></span></div>
+        <h2>まずは<br><strong>体験レッスン・<br>親子で安心説明会へ</strong></h2>
+        <p>LINEからお気軽にご相談ください♪</p>
+        <a class="cta-button" href="https://lin.ee/v1xkP39"><span class="line-badge">LINE</span>LINEで相談する</a>
+        <div class="decor">♪ ♡ 🎤</div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>

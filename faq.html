@@ -4,329 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>よくある質問 | P.S.歌ってみた部</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --ink: #282431;
-      --muted: #70685f;
-      --cream: #fff8ee;
-      --paper: rgba(255, 252, 246, 0.95);
-      --beige: #f6ead8;
-      --line: rgba(181, 126, 83, 0.24);
-      --terracotta: #b96f56;
-      --rose: #d97886;
-      --gold: #d2a24d;
-      --sage: #7f9f83;
-      --shadow: 0 18px 45px rgba(153, 110, 78, 0.14);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        linear-gradient(rgba(255, 250, 242, 0.88), rgba(255, 252, 247, 0.96)),
-        url("image/2_ps_FV_back ground.png") top center / cover fixed,
-        var(--cream);
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      width: min(100%, 860px);
-      margin: 0 auto;
-      padding: 18px 16px 32px;
-    }
-
-    .back {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      margin-bottom: 8px;
-      color: var(--terracotta);
-      font-size: 14px;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .panel {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--paper);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 36px 34px 32px;
-      background:
-        linear-gradient(110deg, rgba(255, 252, 246, 0.98) 0%, rgba(255, 249, 239, 0.96) 58%, rgba(248, 232, 211, 0.84) 100%);
-    }
-
-    .hero::before,
-    .hero::after {
-      position: absolute;
-      color: rgba(210, 162, 77, 0.38);
-      font-size: 34px;
-      font-weight: 900;
-      pointer-events: none;
-    }
-
-    .hero::before {
-      content: "✦";
-      left: 24px;
-      top: 24px;
-    }
-
-    .hero::after {
-      content: "♪";
-      right: 30px;
-      top: 28px;
-      color: rgba(185, 111, 86, 0.34);
-      transform: rotate(18deg);
-    }
-
-    h1,
-    h2,
-    p {
-      margin-top: 0;
-    }
-
-    h1 {
-      margin-bottom: 16px;
-      color: var(--ink);
-      font-size: clamp(38px, 9vw, 68px);
-      line-height: 1.08;
-      letter-spacing: 0;
-    }
-
-    .subtitle {
-      max-width: 620px;
-      margin: 0 0 22px;
-      color: var(--muted);
-      font-size: 17px;
-      font-weight: 750;
-      line-height: 1.9;
-    }
-
-    .ribbon {
-      display: inline-block;
-      max-width: 100%;
-      padding: 10px 18px;
-      color: #fff;
-      background: linear-gradient(90deg, #d9956c, #c77a62);
-      border-radius: 8px;
-      box-shadow: 0 10px 20px rgba(185, 111, 86, 0.18);
-      font-size: 15px;
-      font-weight: 900;
-      line-height: 1.6;
-    }
-
-    .faq-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    details {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 252, 246, 0.92);
-      box-shadow: 0 10px 24px rgba(153, 110, 78, 0.08);
-    }
-
-    details[open] {
-      background: linear-gradient(120deg, rgba(255, 252, 246, 0.98), rgba(251, 238, 222, 0.9));
-    }
-
-    summary {
-      position: relative;
-      display: grid;
-      grid-template-columns: 42px 1fr 28px;
-      gap: 12px;
-      align-items: center;
-      min-height: 72px;
-      padding: 18px 18px;
-      cursor: pointer;
-      color: var(--terracotta);
-      font-size: 18px;
-      font-weight: 900;
-      line-height: 1.5;
-      list-style: none;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary::before {
-      content: "Q";
-      display: grid;
-      place-items: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      color: #fff;
-      background: linear-gradient(135deg, var(--terracotta), var(--rose));
-      font-size: 18px;
-      line-height: 1;
-      box-shadow: 0 10px 18px rgba(185, 111, 86, 0.18);
-    }
-
-    summary::after {
-      content: "+";
-      display: grid;
-      place-items: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      color: var(--terracotta);
-      background: var(--beige);
-      font-size: 22px;
-      line-height: 1;
-    }
-
-    details[open] summary::after {
-      content: "−";
-    }
-
-    .answer {
-      display: grid;
-      gap: 12px;
-      padding: 0 22px 22px 72px;
-    }
-
-    .answer p {
-      margin: 0;
-      color: var(--ink);
-      font-size: 16px;
-      font-weight: 650;
-      line-height: 1.9;
-    }
-
-    .answer ul {
-      display: grid;
-      gap: 8px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .answer li {
-      position: relative;
-      padding-left: 24px;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.75;
-    }
-
-    .answer li::before {
-      content: "・";
-      position: absolute;
-      left: 4px;
-      color: var(--terracotta);
-      font-weight: 900;
-    }
-
-    .cta {
-      margin-top: 18px;
-      padding: 30px 24px;
-      text-align: center;
-      background:
-        linear-gradient(120deg, rgba(255, 252, 246, 0.96), rgba(237, 245, 226, 0.84)),
-        var(--paper);
-    }
-
-    .cta h2 {
-      margin-bottom: 12px;
-      color: var(--terracotta);
-      font-size: clamp(24px, 6vw, 36px);
-      line-height: 1.35;
-      letter-spacing: 0;
-    }
-
-    .cta p {
-      margin: 0 auto 20px;
-      max-width: 620px;
-      color: var(--muted);
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.9;
-    }
-
-    .cta-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 14px 22px;
-      border-radius: 8px;
-      color: #fff;
-      background: linear-gradient(90deg, #d9956c, #c77a62);
-      box-shadow: 0 12px 24px rgba(185, 111, 86, 0.2);
-      font-size: 16px;
-      font-weight: 900;
-      line-height: 1.45;
-      text-decoration: none;
-    }
-
-    @media (max-width: 680px) {
-      body {
-        background-attachment: scroll;
-      }
-
-      .page {
-        padding: 12px 10px 24px;
-      }
-
-      .hero {
-        padding: 30px 20px 24px;
-      }
-
-      summary {
-        grid-template-columns: 34px 1fr 26px;
-        gap: 10px;
-        padding: 16px 14px;
-        font-size: 16px;
-      }
-
-      summary::before {
-        width: 34px;
-        height: 34px;
-        font-size: 16px;
-      }
-
-      .answer {
-        padding: 0 16px 18px 58px;
-      }
-
-      .answer p,
-      .answer li {
-        font-size: 15.5px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="line-article.css">
 </head>
 <body>
   <main class="page">
-    <a class="back" href="index.html">← TOPへ戻る</a>
-
-    <header class="hero panel">
+    <header class="hero">
       <h1>よくある質問</h1>
-      <p class="subtitle">保護者の方からよくいただくご不安にお答えします。</p>
+      <p class="lead">保護者の方からよくいただくご不安にお答えします。</p>
       <div class="ribbon">安心して体験レッスン・親子で安心説明会へ進めるように</div>
     </header>
 
-    <section class="faq-list" aria-label="よくある質問一覧">
+    <section class="content" aria-label="よくある質問一覧">
       <details open>
         <summary>コミュニティと聞くと少し不安です…</summary>
         <div class="answer">
@@ -380,8 +68,7 @@
         <summary>うちの子は歌が上手くありません。それでも参加できますか？</summary>
         <div class="answer">
           <p>もちろん大丈夫です。</p>
-          <p>P.S.歌ってみた部は、もともと歌が上手な子のための場所ではありません。</p>
-          <p>「歌うことが好き」「歌い手に憧れている」「やってみたいけど自信がない」そんな子どもたちが安心して挑戦できる場所を目指しています。</p>
+          <p>P.S.歌ってみた部は、もともと歌が上手な子のための場所ではなく、「歌うことが好き」「歌い手に憧れている」「やってみたいけど自信がない」そんな子どもたちが安心して挑戦できる場所を目指しています。</p>
           <p>一人ひとりのペースに合わせてサポートしますので、初心者のお子さまも安心してご参加ください。</p>
         </div>
       </details>
@@ -399,13 +86,7 @@
         <summary>ボイトレがメインですか？それともコミュニティ活動がメインですか？</summary>
         <div class="answer">
           <p>発声や歌唱などのボイストレーニングがベースです。</p>
-          <p>その上で、次のような活動も楽しめるのがP.S.歌ってみた部の特徴です。</p>
-          <ul>
-            <li>歌ってみた制作</li>
-            <li>録音体験</li>
-            <li>音楽仲間との交流（グループレッスンの対面時のみ）</li>
-            <li>作品投稿</li>
-          </ul>
+          <p>その上で、歌ってみた制作、録音体験、音楽仲間との交流（グループレッスンの対面時のみ）、作品投稿などを楽しめるのがP.S.歌ってみた部の特徴です。</p>
           <p>「まずは歌を上達したい」というお子さまにもご利用いただけます。</p>
         </div>
       </details>
@@ -413,12 +94,7 @@
       <details>
         <summary>通えるか不安です…</summary>
         <div class="answer">
-          <p>P.S.歌ってみた部では、次の形に対応しています。</p>
-          <ul>
-            <li>近隣のカラオケルーム</li>
-            <li>レンタルスペース</li>
-            <li>オンラインレッスン（Zoom）</li>
-          </ul>
+          <p>P.S.歌ってみた部では、近隣のカラオケルーム、レンタルスペース、オンラインレッスン（Zoom）に対応しています。</p>
           <p>お住まいの地域やご希望に合わせて、できるだけ参加しやすい方法をご提案いたします。</p>
         </div>
       </details>
@@ -452,10 +128,10 @@
       </details>
     </section>
 
-    <section class="cta panel">
+    <section class="cta">
       <h2>まずは体験レッスン・親子で安心説明会へ</h2>
-      <p>不安な点を相談しながら、お子さまに合う参加方法を一緒に確認できます。</p>
-      <a class="cta-link" href="index.html">TOPへ戻って申し込み導線を確認する</a>
+      <p>LINEに戻って、不安な点を相談しながら参加方法を確認できます。</p>
+      <a class="cta-link" href="https://lin.ee/v1xkP39">LINEで相談・予約する</a>
     </section>
   </main>
 </body>

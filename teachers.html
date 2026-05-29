@@ -4,381 +4,69 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>先生紹介 | P.S.歌ってみた部</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --ink: #242333;
-      --muted: #625d72;
-      --rose: #d97886;
-      --terracotta: #b96f56;
-      --sage: #7f9f83;
-      --gold: #d2a24d;
-      --card: rgba(255, 252, 246, 0.94);
-      --line: rgba(191, 132, 90, 0.22);
-      --shadow: 0 18px 45px rgba(153, 110, 78, 0.14);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        linear-gradient(rgba(255, 250, 242, 0.86), rgba(255, 252, 247, 0.95)),
-        url("image/2_ps_FV_back ground.png") top center / cover fixed,
-        #fff8ee;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      width: min(100%, 860px);
-      margin: 0 auto;
-      padding: 18px 16px 30px;
-    }
-
-    .back {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      margin-bottom: 8px;
-      color: var(--terracotta);
-      font-size: 14px;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .panel {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 300px;
-      gap: 28px;
-      align-items: center;
-      padding: 34px;
-      background:
-        linear-gradient(110deg, rgba(255, 252, 246, 0.98) 0%, rgba(255, 249, 239, 0.96) 58%, rgba(248, 232, 211, 0.84) 100%);
-    }
-
-    .hero::before,
-    .hero::after {
-      position: absolute;
-      color: rgba(210, 162, 77, 0.42);
-      font-size: 34px;
-      font-weight: 900;
-      pointer-events: none;
-    }
-
-    .hero::before {
-      content: "✦";
-      left: 22px;
-      top: 24px;
-    }
-
-    .hero::after {
-      content: "♪";
-      right: 28px;
-      top: 28px;
-      color: rgba(185, 111, 86, 0.34);
-      transform: rotate(18deg);
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 12px;
-      color: var(--terracotta);
-      font-size: 15px;
-      font-weight: 900;
-    }
-
-    h1 {
-      margin-bottom: 16px;
-      color: var(--ink);
-      font-size: clamp(38px, 9vw, 68px);
-      line-height: 1.08;
-      letter-spacing: 0;
-    }
-
-    .name {
-      margin-bottom: 18px;
-      color: var(--terracotta);
-      font-size: clamp(22px, 5.4vw, 34px);
-      font-weight: 900;
-      line-height: 1.35;
-    }
-
-    .ribbon {
-      width: min(520px, 100%);
-      margin: 0 0 24px;
-      padding: 12px 20px;
-      color: #fff;
-      background: linear-gradient(90deg, #d9956c, #c77a62);
-      box-shadow: 0 10px 20px rgba(185, 111, 86, 0.18);
-      text-align: center;
-      font-size: 16px;
-      font-weight: 900;
-      line-height: 1.6;
-      clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 18px 50%);
-    }
-
-    .lead {
-      margin: 0;
-      font-size: 17px;
-      font-weight: 750;
-      line-height: 2;
-    }
-
-    .profile-photo {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      object-position: center top;
-      border: 8px solid rgba(255, 252, 246, 0.9);
-      border-radius: 8px;
-      box-shadow: 0 16px 34px rgba(153, 110, 78, 0.16);
-    }
-
-    .content {
-      display: grid;
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .section {
-      padding: 30px 28px;
-    }
-
-    .section-pink {
-      background:
-        linear-gradient(120deg, rgba(255, 252, 246, 0.96), rgba(251, 238, 222, 0.92)),
-        var(--card);
-    }
-
-    .section-violet {
-      background:
-        linear-gradient(120deg, rgba(255, 252, 246, 0.96), rgba(245, 236, 222, 0.9)),
-        var(--card);
-    }
-
-    .section-mint {
-      background:
-        linear-gradient(120deg, rgba(255, 252, 246, 0.96), rgba(237, 245, 226, 0.86)),
-        var(--card);
-    }
-
-    h2 {
-      margin-bottom: 22px;
-      text-align: center;
-      color: var(--terracotta);
-      font-size: clamp(26px, 6.5vw, 38px);
-      line-height: 1.25;
-      letter-spacing: 0;
-    }
-
-    h2.pink {
-      color: var(--rose);
-    }
-
-    h2.mint {
-      color: var(--sage);
-    }
-
-    .underline {
-      display: inline;
-      padding: 0 8px 3px;
-      background: linear-gradient(transparent 64%, rgba(210, 162, 77, 0.25) 0);
-    }
-
-    p {
-      margin-bottom: 14px;
-      font-size: 16px;
-      font-weight: 650;
-      line-height: 1.95;
-    }
-
-    .quote {
-      margin: 20px 0;
-      padding: 18px 20px;
-      border: 2px solid rgba(185, 111, 86, 0.25);
-      border-radius: 8px;
-      color: var(--terracotta);
-      background: rgba(255, 250, 242, 0.78);
-      text-align: center;
-      font-size: clamp(22px, 6vw, 34px);
-      font-weight: 900;
-      line-height: 1.55;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 290px;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .scene-photo {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 14px 28px rgba(153, 110, 78, 0.14);
-    }
-
-    ul {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin: 20px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    li {
-      display: grid;
-      place-items: center;
-      min-height: 78px;
-      padding: 14px 10px;
-      border: 1px solid rgba(185, 111, 86, 0.16);
-      border-radius: 8px;
-      background: rgba(255, 252, 246, 0.78);
-      color: var(--terracotta);
-      text-align: center;
-      font-size: 16px;
-      font-weight: 900;
-      line-height: 1.45;
-    }
-
-    @media (max-width: 760px) {
-      body {
-        background-attachment: scroll;
-      }
-
-      .page {
-        padding: 12px 10px 24px;
-      }
-
-      .hero,
-      .split {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding: 28px 20px;
-      }
-
-      .profile-photo {
-        max-width: 270px;
-        margin: 0 auto;
-      }
-
-      .section {
-        padding: 26px 18px;
-      }
-
-      .scene-photo {
-        max-width: 310px;
-        margin: 0 auto;
-      }
-
-      ul {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      p {
-        font-size: 15.5px;
-      }
-    }
-
-    @media (max-width: 420px) {
-      ul {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="line-article.css">
 </head>
 <body>
   <main class="page">
-    <a class="back" href="index.html">← TOPへ戻る</a>
-
-    <header class="hero panel">
-      <div>
-        <span class="eyebrow">P.S.歌ってみた部 代表・講師</span>
-        <h1>先生紹介</h1>
-        <div class="name">谷口 剛気<br><small>たにぐち つよき</small></div>
-        <div class="ribbon">安心して声を出せるレッスンを大切にしています</div>
-        <p class="lead">はじめまして。P.S.歌ってみた部の代表、兼講師の谷口剛気です。</p>
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">P.S.歌ってみた部 代表・講師</p>
+          <h1>先生紹介</h1>
+          <p class="lead">谷口 剛気（たにぐち つよき）</p>
+          <div class="ribbon">安心して声を出せるレッスンを大切にしています</div>
+        </div>
+        <img class="photo" src="image/teacher-profile.webp" alt="谷口剛気のプロフィール写真">
       </div>
-      <img class="profile-photo" src="image/teacher-profile.webp" alt="谷口剛気のプロフィール写真">
     </header>
 
     <div class="content">
-      <section class="section section-pink panel">
-        <h2 class="pink"><span class="underline">はじめまして</span></h2>
+      <section class="section guardian">
+        <h2>はじめまして</h2>
+        <p>P.S.歌ってみた部の代表、兼講師の谷口剛気です。</p>
         <p>普段はボイストレーナーとしてレッスンを行いながら、TV番組への楽曲提供、子供向けダンスイベントの主催など、音楽に関わる様々な活動をしています。</p>
         <p>プライベートでは3歳の娘を育てており、子どもと関わる時間の中で、一人ひとりの個性や成長のペースを大切にすることの大事さを日々感じています。</p>
-        <p>だからこそ、レッスンでは「上手く歌うこと」だけでなく、</p>
-        <div class="quote">安心して声を出せること</div>
-        <p>を大切にしています。</p>
+        <p>だからこそ、レッスンでは「上手く歌うこと」だけでなく、「安心して声を出せること」を大切にしています。</p>
       </section>
 
-      <section class="section section-violet panel">
-        <h2><span class="underline">レッスンについて</span></h2>
-        <div class="split">
+      <section class="section soft">
+        <h2>レッスンについて</h2>
+        <div class="two-col">
           <div>
             <p>レッスンでは発声や歌い方の練習はもちろん行いますが、まずは生徒さんとしっかりお話をすることを大事にしています。</p>
             <p>好きなアーティストの話をしたり、最近ハマっている曲を聞いたり、学校の話をしたり。</p>
             <p>その子がどんなことに興味を持っているのかを知った上で、一人ひとりに合わせてレッスンを進めています。</p>
             <p>人見知りのお子さまもたくさんいますので、最初は緊張していても大丈夫です。少しずつ慣れていけるようにサポートしています。</p>
           </div>
-          <img class="scene-photo" src="image/karaoke-lesson.webp" alt="カラオケでのレッスン風景">
+          <img class="photo" src="image/karaoke-lesson.webp" alt="カラオケでのレッスン風景">
         </div>
       </section>
 
-      <section class="section section-mint panel">
-        <h2 class="mint"><span class="underline">音楽との関わり</span></h2>
-        <div class="split">
+      <section class="section">
+        <h2>音楽との関わり</h2>
+        <div class="two-col">
           <div>
             <p>現在は楽曲制作も行っており、ライブハウスでの演奏やイベント出演も続けています。</p>
-            <p>レッスンでは基礎的な発声だけでなく、生徒さんが好きなジャンルに合わせて練習することができます。</p>
-            <ul>
-              <li>J-POP</li>
-              <li>アニソン</li>
-              <li>ボカロ</li>
-              <li>歌ってみた</li>
-            </ul>
+            <p>レッスンでは基礎的な発声だけでなく、J-POP、アニソン、ボカロ、歌ってみたなど、生徒さんが好きなジャンルに合わせて練習することができます。</p>
             <p>「好きな曲をもっと気持ちよく歌えるようになりたい」そんな気持ちを応援できればと思っています。</p>
           </div>
-          <img class="scene-photo" src="image/group-lesson.webp" alt="グループレッスン風景">
+          <img class="photo" src="image/group-lesson.webp" alt="グループレッスン風景">
         </div>
       </section>
 
-      <section class="section section-pink panel">
-        <h2 class="pink"><span class="underline">最後に</span></h2>
+      <section class="section guardian">
+        <h2>最後に</h2>
         <p>歌を通して、「できた！」「楽しかった！」「また歌いたい！」そんな気持ちが増えていくことが、何より嬉しいです。</p>
         <p>体験レッスンでは、まずその場の空間や先生の雰囲気を知っていただければと思います。</p>
         <p>お会いできることを楽しみにしています！</p>
       </section>
     </div>
+
+    <section class="cta">
+      <h2>まずは体験レッスン・親子で安心説明会へ</h2>
+      <p>LINEに戻って、親子で相談しながら参加方法を確認できます。</p>
+      <a class="cta-link" href="https://lin.ee/v1xkP39">LINEで相談・予約する</a>
+    </section>
   </main>
 </body>
 </html>

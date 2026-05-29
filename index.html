@@ -4,70 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>P.S.歌ってみた部</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #222;
-      background: #f7f4ee;
-    }
-
-    main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 64px 24px;
-    }
-
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(32px, 8vw, 56px);
-      line-height: 1.1;
-      letter-spacing: 0;
-    }
-
-    p {
-      margin: 0 0 40px;
-      color: #666;
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    nav {
-      display: grid;
-      gap: 12px;
-    }
-
-    a {
-      display: block;
-      padding: 18px 20px;
-      color: #222;
-      text-decoration: none;
-      background: #fff;
-      border: 1px solid #ddd7cc;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    a:hover,
-    a:focus-visible {
-      border-color: #222;
-      outline: none;
-    }
-  </style>
+  <link rel="stylesheet" href="line-article.css">
 </head>
 <body>
-  <main>
-    <h1>P.S.歌ってみた部</h1>
-    <p>仮トップページです。各ページへのリンクだけを置いています。</p>
+  <main class="page">
+    <header class="hero">
+      <img class="logo" src="image/7_ps_FV_logo.png" alt="P.S.歌ってみた部">
+      <h1>推しみたいに、歌ってみよう！</h1>
+      <p class="lead">発声や歌唱などのボイストレーニングをベースに、歌ってみた・録音・MIX・投稿・オリジナル曲制作まで体験できる、小中学生向けの歌い手体験コミュニティです。</p>
+      <div class="ribbon">顔出しなしOK。親御さま面談必須。投稿は任意です。</div>
+    </header>
 
-    <nav aria-label="ページ内メニュー">
-      <a href="about.html">P.S.歌ってみたとは</a>
-      <a href="lessons.html">レッスン内容</a>
-      <a href="teachers.html">先生紹介</a>
-      <a href="faq.html">よくある質問</a>
-      <a href="rules.html">安心・安全のルール</a>
-    </nav>
+    <section class="content menu-grid" aria-label="リッチメニュー">
+      <a class="menu-card" href="https://lin.ee/v1xkP39">体験予約</a>
+      <a class="menu-card" href="about.html">P.S.歌ってみた部とは</a>
+      <a class="menu-card" href="lessons.html">レッスン内容</a>
+      <a class="menu-card" href="teachers.html">先生紹介</a>
+      <a class="menu-card" href="faq.html">よくある質問</a>
+      <a class="menu-card" href="rules.html">安心・安全のルール</a>
+    </section>
   </main>
 </body>
 </html>

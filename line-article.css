@@ -200,7 +200,9 @@ h1 strong {
   width: 62%;
   margin: 14px 0 0;
   text-align: left;
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.9;
+  white-space: nowrap;
 }
 
 .lessons-hero-image {
@@ -296,7 +298,7 @@ p:last-child {
   display: grid;
   grid-template-columns: 64px 1fr;
   gap: 14px;
-  align-items: start;
+  align-items: center;
 }
 
 .lesson-list .icon {
@@ -307,6 +309,11 @@ p:last-child {
 .lesson-list .card p,
 .lesson-list .card ul {
   grid-column: 2;
+}
+
+.lesson-list .card h3 {
+  align-self: center;
+  margin-bottom: 0;
 }
 
 .lesson-flow-card {

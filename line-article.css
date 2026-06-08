@@ -318,8 +318,10 @@ p:last-child {
 
 .lesson-list .card p,
 .lesson-list .card ul {
+  position: relative;
+  left: -3em;
   width: fit-content;
-  max-width: 100%;
+  max-width: calc(100% - 3em);
   margin-right: auto;
   margin-left: auto;
   text-align: left;

@@ -296,8 +296,8 @@ p:last-child {
 
 .lesson-list .card {
   display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: 14px;
+  grid-template-columns: 58px 1fr;
+  gap: 10px;
   align-items: center;
 }
 
@@ -318,12 +318,10 @@ p:last-child {
 
 .lesson-list .card p,
 .lesson-list .card ul {
-  position: relative;
-  left: -3em;
-  width: fit-content;
-  max-width: calc(100% - 3em);
-  margin-right: auto;
-  margin-left: auto;
+  width: 100%;
+  max-width: none;
+  margin-right: 0;
+  margin-left: 0;
   text-align: left;
 }
 

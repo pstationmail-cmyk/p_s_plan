@@ -316,6 +316,15 @@ p:last-child {
   margin-bottom: 0;
 }
 
+.lesson-list .card p,
+.lesson-list .card ul {
+  width: fit-content;
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+}
+
 .lesson-flow-card {
   position: relative;
   display: grid;
